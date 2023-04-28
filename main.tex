@@ -1,0 +1,187 @@
+
+%--------------- Personalize your document here ---------------
+
+\author{Your name goes here} % Enter your name
+\newcommand{\studentID}{-} % enter your student ID
+\newcommand{\supervisorone}{Dr. Richard Daystrom}
+\newcommand{\supervisortwo}{Dr. Noonien Soong}
+\newcommand{\supervisorthree}{Dr. Agnes Jurati} 
+\newcommand{\supervisorfour}{Dr. Nel Apgar} 
+\newcommand{\department}{DEPARTMENT OF PHYSICS AND ASTRONOMY}
+\newcommand{\exam}{PHD COMPREHENSIVE EXAM}
+
+\newcommand{\numpy}{{\tt numpy}}    % tt font for numpy
+%\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+\newcommand{\nm}{\|}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\kvec}{\mathbf{k}}
+\newcommand{\up}{\uparrow}
+\newcommand{\down}{\downarrow}
+\newcommand{\xvec}{\mathbf{x}}
+\newcommand{\diff}{\text{d}}
+\newcommand{\rvec}{\mathbf{r}}
+\newcommand{\crop}{\hat{c}^{\dagger}}
+\newcommand{\deop}{\hat{c}^{\phantom\dagger}}
+\newcommand{\fcop}{\hat{\Psi}^{\dagger}}
+\newcommand{\fdop}{\hat{\Psi}^{\phantom\dagger}}
+\newcommand{\qvec}{\mathbf{q}}
+\newcommand{\pvec}{\mathbf{p}}
+
+
+
+\title{A good title goes here} %Enter the title of your report 
+\date{\today} % insert a specific date	
+
+%--------------------------------------------------------------
+
+% This document was adapted from the
+% TEMPLATE FOR PHYS250 WORKSHEET created by Alastair McLean
+% URL: https://www.overleaf.com/latex/templates/phys250-worksheet-template/xxftvfhmwqdt
+
+% Jefferson Silveira
+% Email: 19jdls1@queensu.ca
+% Last update: 09-Jun-2021
+% If you have any questions or concerns, do not hesitate to contact me.
+%--------------------------------------------------------------
+
+\documentclass[a4paper,12pt]{article}
+\usepackage[left=20mm,top=20mm,right=20mm,bottom=20mm]{geometry}
+\usepackage{etoolbox} %required for cover page
+\usepackage{booktabs}
+\usepackage[usestackEOL]{stackengine}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage[capitalise]{cleveref}
+\usepackage{enumitem,kantlipsum}
+\usepackage{amssymb}
+\usepackage[square,numbers,sort]{natbib}
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage{listings}
+\usepackage{minted}
+\usepackage{feynmp}
+\usepackage{tikz}
+\usepackage[compat=1.1.0]{tikz-feynman}
+\usepackage{todonotes}
+\usepackage{physics}
+\usepackage{graphicx}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{bbm}
+\usepackage{setspace}
+\usepackage[colorlinks = true,
+            linkcolor = blue,
+            urlcolor  = red,
+            citecolor = blue,
+            anchorcolor = blue]{hyperref}
+\usepackage[font=small,labelfont=bf]{caption}
+
+ \usepackage[
+ style = nature
+ ]{biblatex}
+
+\usemintedstyle{emacs}
+
+\renewcommand{\listingscaption}{Algorithm}
+\renewcommand{\listoflistingscaption}{List of Algorithms}
+
+\addbibresource{bibliography.bib}
+%\bibliographystyle{phys}
+
+\hypersetup{
+    colorlinks,
+    linkcolor={black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+
+\linespread{1}
+
+\newtheorem{theorem}{Theorem}[section]
+\graphicspath{{figures/}}	
+
+%----------------------------------TITLE PAGE -----------------------------------
+\makeatletter
+\def\maketitle{
+  \begin{center}\leavevmode
+       \normalfont
+       \includegraphics[width=0.5\columnwidth]{figures/UT_logo1.png}
+       \vskip 0.1cm   
+       \textsc{\large \department}\\
+       \vskip 1.0cm
+       \rule{\linewidth}{0.2 mm} \\
+       {\large \exam}\\[0.5 cm]
+       {\LARGE \bfseries \@title \par}
+       \vspace{0.5cm}
+	\rule{\linewidth}{0.2 mm} \\[1.5 cm]
+	 
+	\begin{minipage}[t]{0.45\textwidth}
+		\begin{flushleft} \large
+			\emph{Author:}\\
+			\@author\\
+                \emph{Advisor:}\\
+			\supervisorone\\
+		\end{flushleft}
+	\end{minipage}
+	\begin{minipage}[t]{0.45\textwidth}
+	    \begin{flushright} \large
+			\ifdefempty{\supervisortwo}{\emph{Supervisor:\\}}{\emph{Committee:\\}}
+			\supervisorone\\
+		      \supervisortwo\\
+                \supervisorthree\\
+                \supervisorfour\\
+		\end{flushright}
+	\end{minipage}
+	\vfill
+	{\Large \@date\par}
+   \end{center}
+   %\vfill
+   %\null
+   \cleardoublepage
+  }
+\makeatother
+
+
+%-------------------------------- ENDTITLE PAGE ----------------------------------
+\doublespacing
+\begin{document}
+
+\pagenumbering{gobble}% Remove page numbers (and reset to 1)
+
+\maketitle
+
+\tableofcontents
+\newpage
+%\listoffigures
+%\newpage
+%\listoftables
+%\newpage
+%\listofalgorithms % List of algorithms in pseudocode format
+%\newpage
+%\listoflistings % List of algorithms in code format
+%\newpage
+
+
+\pagenumbering{arabic}% Arabic page numbers (and reset to 1)
+
+% This is how you can organize your document
+\input{sections/Introduction.tex}
+\input{sections/Methods.tex}
+\input{sections/Summary.tex}
+\input{sections/Future.tex}
+
+
+%If you came here because you want your references in a new page, uncomment the following line
+
+%\clearpage % If you want the references in a separate page
+\printbibliography
+\end{document}
